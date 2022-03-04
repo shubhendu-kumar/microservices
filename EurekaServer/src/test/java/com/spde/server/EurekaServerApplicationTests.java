@@ -1,4 +1,4 @@
-package com.spde.demo;
+package com.spde.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
