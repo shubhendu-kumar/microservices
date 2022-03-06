@@ -5,7 +5,7 @@ To create a user, JSON should be:
 {  
 &nbsp;&nbsp;&nbsp;&nbsp;"firstName": "Shubhendu",  
 &nbsp;&nbsp;&nbsp;&nbsp;"lastName": "Paul",  
-&nbsp;&nbsp;&nbsp;&nbsp;"email": "shubhendu.kumar@gmail.com",  
+&nbsp;&nbsp;&nbsp;&nbsp;"email": "paul.shubhendu@gmail.com",  
 &nbsp;&nbsp;&nbsp;&nbsp;"departmentId": 1  
 }  
 

@@ -2,8 +2,6 @@ server:
   port: 9191
 
 spring:
-  main:
-    banner-mode: off
   application:
     name: API-GATEWAY
   cloud:
@@ -13,20 +11,20 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
-        #          filters:
-        #            - name: CircuitBreaker
-        #              args:
-        #                name: USER-SERVICE
-        #                fallbackuri: forward:/userServiceFallback
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: USER-SERVICE
+                fallbackuri: forward:/userServiceFallback
         - id: DEPARTMENT-SERVICE
           uri: lb://DEPARTMENT-SERVICE
           predicates:
             - Path=/departments/**
-    #          filters:
-    #            - name: CircuitBreaker
-    #              args:
-    #                name: DEPARTMENT-SERVICE
-    #                fallbackuri: forward:/departmentServiceFallback
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: DEPARTMENT-SERVICE
+                fallbackuri: forward:/departmentServiceFallback
     config:
       uri: http://localhost:9200
       enabled: true
