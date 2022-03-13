@@ -1,29 +1,40 @@
 plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2021.0.1")
 }
 
 allprojects {
-    apply plugin: 'java'
-
     group = 'com.spde'
     version = '1.0.0'
-
-    ext {
-        set('springCloudVersion', "2021.0.1")
-    }
-
-    repositories {
-        mavenCentral()
-    }
+    sourceCompatibility = '1.8'
 }
 
 subprojects {
+    apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    sourceCompatibility = '1.8'
+    repositories {
+        mavenCentral()
+    }
+    
+    test {
+        useJUnitPlatform()
+    }
+    
+    dependencies {
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
 
     dependencyManagement {
         imports {
@@ -36,6 +47,6 @@ bootJar {
     enabled = false
 }
 
-jar {
-    enabled = true
+bootBuildImage{
+    enabled = false
 }
